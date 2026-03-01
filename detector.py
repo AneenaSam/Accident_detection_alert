@@ -61,12 +61,19 @@ def detect_accident(frame, confidence_threshold=0.25):
                            (x1, y1-8), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 255, 0), 1)
 
     # ── DETECTION LAYER 1: Sudden abnormal motion (impact) ──
+    # Always convert from the ORIGINAL frame (not resized) to keep consistent size
     frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
     if prev_frame_gray is not None:
+        # ✅ FIX: if sizes differ (e.g. variable resolution video), resize prev to match
+        if prev_frame_gray.shape != frame_gray.shape:
+            prev_frame_gray = cv2.resize(prev_frame_gray, (frame_gray.shape[1], frame_gray.shape[0]))
+
         motion_score = detect_sudden_motion(prev_frame_gray, frame_gray)
         if motion_score > 18 and len(vehicles_detected) >= 1:
             accident_detected = True
             accident_reason = f"Sudden Impact Motion (score:{motion_score:.1f})"
+
     prev_frame_gray = frame_gray
 
     # ── DETECTION LAYER 2: Vehicle-only overlap (tight threshold) ──
@@ -182,9 +189,7 @@ def run_on_video(video_path, on_accident_callback):
     alert_sent = False
     frame_count = 0
 
-    # Cooldown to avoid multiple triggers
     accident_frame_count = 0
-    COOLDOWN = 20
 
     while cap.isOpened():
         ret, frame = cap.read()

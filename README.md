@@ -49,7 +49,8 @@ SafeAI/
 ├── app.py                  # Main Streamlit application
 ├── detector.py             # YOLOv8 accident detection engine
 ├── alert.py                # All alert functions (SMS, call, email)
-├── generate_alerts.py      # Generate audio alert files (run once)
+├──generate_alerts.py       # Generate audio alert files (run once)
+├── goldenresq_app.py 
 ├── sms.py                  # Standalone SMS test script
 ├── yolov8n.pt              # YOLOv8 nano model weights
 │
@@ -66,41 +67,6 @@ SafeAI/
 
 ---
 
-## ⚙️ Installation
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/safeai.git
-cd safeai
-```
-
-### 2. Create a virtual environment
-```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-`
-
-### 3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Set up your `.env` file
-Create a `.env` file in the root folder
-
-### 5. Generate audio alert
-```bash
-python generate_alerts.py
-```
-
-### 6. Run the app
-```bash
-streamlit run app.py
-```
-
----
 
 ## 🔑 API Setup Guide
 

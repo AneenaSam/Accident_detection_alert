@@ -1,5 +1,4 @@
-# GoldenResQ
-# 🛡️ SafeAI — Golden Hour Response System
+# GoldenResQ — Golden Hour Response System
 
 > **AI-powered real-time road accident detection and multi-agency emergency alert system**  
 > *Saving lives by acting within the critical Golden Hour*
@@ -8,7 +7,7 @@
 
 ## 📌 Overview
 
-**SafeAI** is an intelligent emergency response system that uses computer vision to automatically detect road accidents from CCTV footage and instantly dispatch alerts to hospitals, police, and ambulance services — all within seconds.
+**GoldenResQ** is an intelligent emergency response system that uses computer vision to automatically detect road accidents from CCTV footage and instantly dispatch alerts to hospitals, police, and ambulance services — all within seconds.
 
 The system is built around the concept of the **Golden Hour**: the critical 60-minute window after a traumatic accident where immediate medical intervention dramatically increases survival rates.
 
@@ -44,12 +43,12 @@ An alert is only fired when **2+ consecutive frames** confirm an accident.
 ## 🏗️ Project Structure
 
 ```
-SafeAI/
+GoldenResQ/
 │
 ├── app.py                  # Main Streamlit application
 ├── detector.py             # YOLOv8 accident detection engine
 ├── alert.py                # All alert functions (SMS, call, email)
-├──generate_alerts.py       # Generate audio alert files (run once)
+├── generate_alerts.py       # Generate audio alert files (run once)
 ├── goldenresq_app.py 
 ├── sms.py                  # Standalone SMS test script
 ├── yolov8n.pt              # YOLOv8 nano model weights
@@ -90,12 +89,6 @@ The hospital accept link in emails must point to a **publicly accessible URL**, 
 1. Push project to GitHub
 2. Deploy at [streamlit.io/cloud](https://streamlit.io/cloud)
 3. Set `APP_URL=https://your-app.streamlit.app` in Secrets
-
-**Option 2 — ngrok (Local Testing)**
-```bash
-ngrok http 8501
-# Copy the https URL and set APP_URL in .env
-```
 
 ---
 
@@ -150,4 +143,4 @@ pip install -r requirements.txt
 
 ## 👨‍💻 Built With ❤️ for Hackathon
 
-*SafeAI — Because every second counts.*
+*GoldenResQ — Because every second counts.*
